@@ -1,0 +1,7 @@
+<% render_region :main do |main| %>
+  <% main.edit_form do %>
+    <% form_for :site_country, @site_country, :url => admin_country_path(@site_country), :html => {:class => 'semantic-form', :id => "site_site_country_form_id", :method => :put} do |f| %>
+      <%= render :partial => 'form', :locals => { :f => f, :save_label => 'Update'} %>
+    <% end %>
+  <% end %>
+<% end %>

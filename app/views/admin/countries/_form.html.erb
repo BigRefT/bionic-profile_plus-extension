@@ -1,0 +1,19 @@
+<% field_set_tag "#{save_label} Country#{": #{@site_country.name}" unless @site_country.new_record?}" do -%>
+  <% render_region :form_top, :locals => { :f => f } do |form_top| %>
+    <% form_top.edit_errors do %>
+      <%= error_messages_for :site_country %>
+    <% end %>
+  <% end %>
+  <% render_region :form, :locals => { :f => f } do |form| %>
+    <% form.edit_country do %>
+      <% if @site_country.new_record? %>
+        <%= f.select :country_id, @countries.collect { |country| [country.name, country.id] }, :label => "Country:", :help => "Choose a country that you want to support.", :required => true %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% render_region :form_bottom, :locals => { :f => f } do |form_bottom| %>
+    <% form_bottom.edit_buttons do %>
+      <%= f.submit_or_back save_label, admin_countries_path %>
+    <% end %>
+  <% end %>
+<% end %>

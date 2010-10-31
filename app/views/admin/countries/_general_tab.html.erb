@@ -1,0 +1,18 @@
+<div class="list_content" id="general_tab_id">
+  <% render_region :general_list_content do |general_list_content| %>
+    <% general_list_content.show_data do %>
+      <table class="left_table">
+        <%= render :partial => "site_country_show_data" %>
+      </table>
+    <% end %>
+
+    <% general_list_content.show_form_header do %>
+      <h3><%= @site_country.country.province_title %></h3>
+    <% end %>
+    <% general_list_content.show_form do %>
+      <% form_for @site_country, :url => admin_country_path(@site_country), :builder => ActionView::Helpers::FormBuilder do |f| %>
+        <%= render :partial => 'show_form_fields', :locals => { :f => f } %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,18 @@
+<%= render_region :general_show_form_top %>
+<table class="list_table">
+  <% render_region :general_show_form do |general_show_form| %>
+    <% general_show_form.show_form_column_headers do %>
+      <%= render :partial => 'show_form_column_headers' %>
+    <% end %>
+    <% general_show_form.show_form_buttons do %>
+      <tr>
+        <td>&nbsp;</td>
+        <td align="center"><%= f.submit "Update"%></td>
+      </tr>
+    <% end %>
+    <% general_show_form.show_form_column_fields do %>
+      <%= render :partial => 'show_form_column_fields', :locals => { :f => f } %>
+    <% end %>
+  <% end %>
+</table>
+<%= render_region :general_show_form_bottom %>

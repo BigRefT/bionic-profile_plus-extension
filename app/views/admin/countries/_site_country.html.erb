@@ -1,0 +1,21 @@
+<tr id="site_country-<%= site_country.id.to_s %>" class="country_row list_row">
+  <% render_region :list_data, :locals => { :site_country => site_country } do |list_data| %>
+    <% list_data.country_column do %>
+      <td class="name"><%= site_country.code %> : <%= link_to site_country.name, admin_country_url(site_country) %></td>
+    <% end %>
+    <% list_data.sub_regions_column do %>
+      <td>
+        <% if site_country.site_provinces.length > 0 %>
+        <%= site_country.site_provinces.length %> <%= site_country.country.province_title %>
+        <% else %>
+        ---
+        <% end %>
+      </td>
+    <% end %>
+    <% list_data.actions_column do %>
+      <td class="actions">
+        <%= link_to 'Edit', edit_admin_country_url(site_country) %> | <%= link_to "Delete", admin_country_url(site_country), :confirm => "Are you sure?", :method => :delete %>
+      </td>
+    <% end %>
+  <% end %>
+</tr>

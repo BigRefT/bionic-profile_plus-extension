@@ -1,0 +1,7 @@
+<h3>Addresses</h3>
+<ul>
+<% @profile.addresses.each do |address| %>
+  <li><%= address.label %> - <%= link_to 'Edit', edit_admin_profile_address_path(@profile, address) %> | <%= link_to 'Delete', admin_profile_address_path(@profile, address), :confirm => "Are you sure?", :method => :destroy %></li>
+<% end %>
+</ul>
+<%= link_to 'New Address', new_admin_profile_address_path(@profile) %>

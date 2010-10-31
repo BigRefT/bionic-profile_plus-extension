@@ -1,0 +1,7 @@
+<%= f.text_field :company_name, :label => "Company Name:" %>
+<%= f.text_field :phone, :label => "Phone:" %>
+<%= f.text_field :evening_phone, :label => "Evening Phone:" %>
+<%= f.select :title, Profile::ProfileTitles, :include_blank => true, :label => "Title:" %>
+<%= f.select :how_did_you_hear_id, HowDidYouHear.all.collect { |how| [how.label, how.id] }, :label => "How did you hear answer:" %>
+<%= f.text_field :how_did_you_hear_other, :label => "How did you hear other answer:" %>
+<%= f.check_box :is_subscribed, :label => "Subscribed?", :help => "User selected to be included in marketing." %>

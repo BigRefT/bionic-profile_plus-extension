@@ -1,0 +1,14 @@
+<% @site_country.site_provinces.each do |site_province| %>
+  <% fields_for 'site_provinces[]', site_province, :builder => ActionView::Helpers::FormBuilder do |spf| %>
+  <tr>
+    <% render_region :general_show_form_column_fields, :locals => { :spf => spf } do |general_show_form_column_fields| %>
+      <% general_show_form_column_fields.show_form_province_field do %>
+        <td class="name"><%= site_province.name %></td>
+      <% end %>
+      <% general_show_form_column_fields.show_form_active_field do %>
+        <td align="center"><%= spf.check_box(:active) %></td>
+      <% end %>
+    <% end %>
+  </tr>
+  <% end %>
+<% end %>
