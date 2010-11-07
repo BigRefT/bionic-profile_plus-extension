@@ -12,7 +12,7 @@ module ProfilePlus
                       :address_postal_code
 
         has_many :addresses, :dependent => :destroy
-        has_one :how_did_you_hear
+        belongs_to :how_did_you_hear
         before_save :maybe_update_subcribed_date
         attr_accessible :phone, :evening_phone, :title, :is_subscribed, :company_name,
                         :how_did_you_hear_id, :how_did_you_hear_other,
