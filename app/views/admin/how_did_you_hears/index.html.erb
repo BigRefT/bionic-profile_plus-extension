@@ -1,0 +1,28 @@
+<h1>Found Us Options</h1>
+<% render_region :above_content do |above_content| %>
+  <% above_content.action_list do %>
+  <% end %>
+<% end %>
+<br /><br />
+<div class="list_content" style="border: none;">
+  <ul id="how_did_you_hear_tabs" class="subsection_tabs">
+    <% render_region :tab_header do |tab_header| %>
+      <% tab_header.general_tab_header do %>
+        <li class="tab"><a href="#general_tab_id">General</a></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <div class="clearfix"></div>
+  <%= render_region :tabs %>
+</div>
+<% render_region :below_content do |below_content| %>
+  <% below_content.tab_javascript do %>
+    <%= javascript_include_tag ['livepipe/livepipe', 'livepipe/tabs'] %>
+    <%= javascript_tag(
+          "document.observe('dom:loaded',function(){\n" <<
+          "new Control.Tabs('how_did_you_hear_tabs');\n" <<
+          "});\n"
+        )
+    %>
+  <% end %>
+<% end %>

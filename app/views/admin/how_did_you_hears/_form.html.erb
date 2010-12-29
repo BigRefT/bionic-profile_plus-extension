@@ -1,0 +1,22 @@
+<% field_set_tag "#{save_label} How Did You Hear" do -%>
+  <%= error_messages_for :how_did_you_hear %>
+  <% render_region :form, :locals => { :f => f } do |form| %>
+    <% form.edit_label do %>
+      <%= f.text_field :label %>
+    <% end %>
+    <% form.edit_position do %>
+      <%= f.text_field :position %>
+    <% end %>
+    <% form.edit_active do %>
+      <%= f.check_box :active, :label => "Active?", :help => "Show on Forms" %>
+    <% end %>
+    <% form.edit_other do %>
+      <%= f.check_box :other, :label => "Require More Info?", :help => "User must enter additional information on Other Box" %>
+    <% end %>
+  <% end %>
+  <% render_region :form_bottom, :locals => { :f => f } do |form_bottom| %>
+    <% form_bottom.edit_buttons do %>
+      <%= f.submit_or_back save_label, admin_how_did_you_hears_path %>
+    <% end %>
+  <% end %>
+<% end %>

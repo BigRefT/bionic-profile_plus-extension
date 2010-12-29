@@ -12,5 +12,6 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :addresses, :path_prefix => '/profiles/:profile_id', :name_prefix => 'admin_profile_', :except => [:index, :show]
     admin.resources :countries
+    admin.resources :how_did_you_hears
   end
 end

@@ -1,0 +1,21 @@
+<tr id="how_did_you_hear-<%= how_did_you_hear.id.to_s %>" class="how_did_you_hear_row list_row">
+  <% render_region :general_list_data, :locals => { :how_did_you_hear => how_did_you_hear } do |list_data| %>
+    <% list_data.place_column do %>
+      <td class="name"><%= how_did_you_hear.position %></td>
+    <% end %>
+    <% list_data.label_column do %>
+      <td class="name"><%= how_did_you_hear.label %></td>
+    <% end %>
+    <% list_data.active_column do %>
+      <td align="center"><%= how_did_you_hear.active ? "Yes" : "No" %></td>
+    <% end %>
+    <% list_data.other_column do %>
+      <td align="center"><b><%= how_did_you_hear.other ? "Yes" : "No" %></td>
+    <% end %>
+    <% list_data.actions_column do %>
+      <td class="actions">
+        <%= link_to 'Edit', edit_admin_how_did_you_hear_url(how_did_you_hear) %>
+      </td>
+    <% end %>
+  <% end %>
+</tr>

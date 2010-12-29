@@ -1,0 +1,29 @@
+<div class="list_content" id="general_tab_id">
+  <table class="list_table">
+    <thead>
+      <tr>
+        <% render_region :general_list_headers do |list_headers| %>
+          <% list_headers.place_column_header do %><th>Position</th><% end %>
+          <% list_headers.label_column_header do %><th>Label</th><% end %>
+          <% list_headers.active_column_header do %><th>Active?</th><% end %>
+          <% list_headers.other_column_header do %><th align="center">Require<br>Other Data</th><% end %>
+          <% list_headers.actions_column_header do %><th>Actions</th><% end %>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @how_did_you_hears.length == 0 %>
+        <tr><td colspan="<%= admin_interface.franchises.show.general_list_data.length %>" class="no_entries">No How Did You Hear Options</td></tr>
+      <% else %>
+         <%= render :partial => 'how_did_you_hear', :collection => @how_did_you_hears %>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="action_row">
+    <% render_region :action_row do |action_row| %>
+      <% action_row.new_how_did_you_hear_link do %>
+        <%= link_to 'Add How Did You Hear Option', new_admin_how_did_you_hear_path %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

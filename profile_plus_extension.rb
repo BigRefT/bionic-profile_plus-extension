@@ -18,18 +18,22 @@ class ProfilePlusExtension < Bionic::Extension
 
   def activate
     admin_interface.navigation.user_management.add "Countries", "/admin/countries", :before => "Permissions"
+    admin_interface.navigation.user_management.add "Found Us Options", "/admin/how_did_you_hears", :before => "Countries"
 
     # insert views
     admin_interface.profile.edit.add(:form, "profile_plus", :after => "edit_last_name")
     admin_interface.profile.edit.add(:right_side, "addresses", :after => "profile_history")
     admin_interface.profile.new.add(:form, "profile_plus", :after => "edit_last_name")
+
     
     Bionic::AdminInterface.class_eval do
       attr_accessor :addresses
       attr_accessor :countries
+      attr_accessor :how_did_you_hears
     end
     admin_interface.addresses = load_default_addresses_regions
     admin_interface.countries = load_default_countries_regions
+    admin_interface.how_did_you_hears = load_default_how_did_you_hear_regions
 
     Bionic::EmailSettings.instance.notifiers << { :name => "SendRequestPassword" }
     Bionic::EmailSettings.instance.notifiers << { :name => "RegisterThankYou" }
@@ -118,6 +122,30 @@ class ProfilePlusExtension < Bionic::Extension
         edit.right_side.concat %w{}
       end
       countries.new = countries.edit
+    end
+  end
+
+  def load_default_how_did_you_hear_regions
+    returning OpenStruct.new do |how_did_you_hears|
+      how_did_you_hears.index = Bionic::AdminInterface::RegionSet.new do |index|
+        index.above_content.concat %w{action_list}
+        index.tab_header.concat %w{general_tab_header}
+        index.tabs.concat %w{general_tab}
+        index.general_list_headers.concat %w{place_column_header label_column_header}
+        index.general_list_headers.concat %w{active_column_header other_column_header actions_column_header}
+        index.general_list_data.concat %w{place_column label_column active_column other_column actions_column}
+        index.action_row.concat %w{new_how_did_you_hear_link}
+        index.below_content.concat %w{tab_javascript}
+        index.right_side.concat %w{}
+      end
+      how_did_you_hears.edit = Bionic::AdminInterface::RegionSet.new do |edit|
+        edit.main.concat %w{edit_form}
+        edit.form_top.concat %w{edit_errors}
+        edit.form.concat %w{edit_label edit_position edit_active edit_other}
+        edit.form_bottom.concat %w{edit_buttons}
+        edit.right_side.concat %w{}
+      end
+      how_did_you_hears.new = how_did_you_hears.edit
     end
   end
 
