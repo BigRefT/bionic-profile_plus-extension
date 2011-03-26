@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <% if @how_did_you_hears.length == 0 %>
-        <tr><td colspan="<%= admin_interface.franchises.show.general_list_data.length %>" class="no_entries">No How Did You Hear Options</td></tr>
+        <tr><td colspan="<%= admin_interface.how_did_you_hears.show.general_list_data.length %>" class="no_entries">No How Did You Hear Options</td></tr>
       <% else %>
          <%= render :partial => 'how_did_you_hear', :collection => @how_did_you_hears %>
       <% end %>
